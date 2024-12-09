@@ -7,6 +7,29 @@
     <link rel="stylesheet" href="theme.css" />
   </head>
   <body>
-
+  <div class="container" id="app">
+    <div class="card">
+      <h1>{{title}}: </h1>
+      <div class="form-control">
+        <input 
+            type="text"
+            v-bind:placeholder= "placeholder"
+            v-bind:value="inputValue"
+            v-on:input="inputHandler"
+            v-on:keypress.enter="addHandler"
+          />
+        <button class="btn" v-on:click="addHandler">Add</button>
+        <hr />
+        <ul class="list" v-if="notes.length !== 0" >
+          <li class="list-item" v-for="(note, index) in notes">{{note}}
+            <button class="btn danger" v-on:click="deleteNote(index)">Delete</button>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
